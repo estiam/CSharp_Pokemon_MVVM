@@ -24,7 +24,7 @@
         </Grid.RowDefinitions>
         <Rectangle Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="4" Grid.RowSpan="3" Fill="#CC0000" />
         <Image Grid.Column="1" Grid.Row="1" Source="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/International_Pok%C3%A9mon_logo.svg/1200px-International_Pok%C3%A9mon_logo.svg.png"></Image>
-        <ListBox x:Name="lb_pokemons" Grid.Row="4" Grid.Column="1">
+        <ListBox ItemsSource="{Binding Pokemons}" SelectedItem="{Binding SelectedPokemon}" x:Name="lb_pokemons" Grid.Row="4" Grid.Column="1">
             <ListBox.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="20"/>
@@ -33,7 +33,7 @@
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <Border Padding="10" Background="#CCC" CornerRadius="15">
-                        <TextBlock FontSize="24" FontFamily="Pokemon GB" Text="{Binding}" />
+                        <TextBlock FontSize="12" FontFamily="Pokemon GB" Text="{Binding Name}" />
                     </Border>
                 </DataTemplate>
             </ListBox.ItemTemplate>
@@ -49,10 +49,10 @@
                 <RowDefinition Height="1*"/>
             </Grid.RowDefinitions>
             <Border Background="#CCC" BorderThickness="5" BorderBrush="#333" Grid.Column="1" CornerRadius="20">
-                <Image />
+                <Image Source="{Binding LoadedPokemon.Sprites.PokemonImage}" />
             </Border>
-            <TextBlock Grid.Row="2" FontFamily="Pokemon GB" FontSize="34" TextAlignment="Center" Grid.Column="1"></TextBlock>
-            
+            <TextBlock Grid.Row="2"  FontFamily="Pokemon GB" FontSize="23" TextAlignment="Center" Grid.Column="0" Grid.ColumnSpan="3" Text="{Binding LoadedPokemon.Name}" ></TextBlock>
+            <TextBlock Text="{Binding LoadedPokemon.Id}" />
         </Grid>
     </Grid> 
 </Window>
