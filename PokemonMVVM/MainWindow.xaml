@@ -45,7 +45,8 @@
                 <ColumnDefinition Width="1*"/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
-                <RowDefinition Height="2*"/>
+                <RowDefinition Height="4*"/>
+                <RowDefinition Height="1*"/>
                 <RowDefinition Height="1*"/>
             </Grid.RowDefinitions>
             <Border Background="#CCC" BorderThickness="5" BorderBrush="#333" Grid.Column="1" CornerRadius="20">
@@ -53,6 +54,7 @@
             </Border>
             <TextBlock Grid.Row="2"  FontFamily="Pokemon GB" FontSize="23" TextAlignment="Center" Grid.Column="0" Grid.ColumnSpan="3" Text="{Binding LoadedPokemon.Name}" ></TextBlock>
             <TextBlock Text="{Binding LoadedPokemon.Id}" />
+            <Button Command="{Binding MoreInfo}" CommandParameter="{Binding LoadedPokemon}" Grid.Row="3" Grid.Column="1">View More</Button>
         </Grid>
     </Grid> 
 </Window>

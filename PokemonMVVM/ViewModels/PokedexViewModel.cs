@@ -8,12 +8,15 @@ using System.Linq;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Input;
 using System.Windows.Media;
 
 namespace PokemonMVVM.ViewModels
 {
     class PokedexViewModel : INotifyPropertyChanged
     {
+        #region DATA BINDINGS
         MediaPlayer mp = new MediaPlayer();
         public PokedexViewModel()
         {
@@ -30,7 +33,6 @@ namespace PokemonMVVM.ViewModels
         {
             LoadedPokemon = await PokemonAPIDAL.LoadPokemonAsync(url);
         }
-
 
         private void PokedexViewModel_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
@@ -103,6 +105,24 @@ namespace PokemonMVVM.ViewModels
             }
         }
 
+        #endregion
+
+        private ICommand moreInfo;
+
+        public ICommand MoreInfo
+        {
+            get {
+                if(moreInfo == null)
+                {
+                    moreInfo = new MoreInfoCommand();
+                }
+
+                return moreInfo;
+            }
+            set { moreInfo = value; }
+        }
+
+        #region INotifyPropertyChanged Implementation
         public event PropertyChangedEventHandler PropertyChanged;
 
         protected void OnPropertyChange(string propertyName)
@@ -111,6 +131,24 @@ namespace PokemonMVVM.ViewModels
             {
                 PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
             }
+        }
+
+        #endregion
+    }
+
+    class MoreInfoCommand : ICommand
+    {
+        public event EventHandler CanExecuteChanged;
+
+        public bool CanExecute(object parameter)
+        {
+            return true;
+        }
+
+        public void Execute(object parameter)
+        {
+            Info i = new Info((Pokemon) parameter);
+            i.Show();
         }
     }
 }

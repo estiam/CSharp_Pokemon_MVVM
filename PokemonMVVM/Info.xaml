@@ -1,0 +1,55 @@
+﻿<Window x:Class="PokemonMVVM.Info"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PokemonMVVM"
+        mc:Ignorable="d"
+        Title="Info" Height="450" Width="800">
+    <Grid Background="#FF0000">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="10"/>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="10"/>
+            <ColumnDefinition Width="5*"/>
+            <ColumnDefinition Width="10"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="10"/>
+        </Grid.RowDefinitions>
+        <Border Background="#CCC" BorderThickness="5" BorderBrush="#333" Grid.Column="1" Grid.Row="1" CornerRadius="20">
+            <Image Source="{Binding CurrentPokemon.Sprites.PokemonImage}" />
+        </Border>
+        <StackPanel Orientation="Vertical" Grid.Column="1" Grid.Row="2">
+            <TextBlock FontSize="18" FontFamily="Pokemon GB" TextAlignment="Center" Text="{Binding CurrentPokemon.Name}" />
+            <TextBlock FontSize="14" TextWrapping="Wrap" FontFamily="Pokemon GB" TextAlignment="Center">
+                <Run>Type : </Run>
+                <Run Text="{Binding CurrentPokemon.TypesAsString, Mode=OneWay}"/>
+            </TextBlock>
+        </StackPanel>
+        <StackPanel Grid.Column="3" Grid.Row="1" Grid.RowSpan="2">
+            <TextBlock FontFamily="Pokemon GB" FontSize="18">
+                <Run>Size : </Run>
+                <Bold><Run Text="{Binding CurrentPokemon.HeightCm, Mode=OneWay}"></Run></Bold>
+                <Run>cm</Run>
+            </TextBlock>
+            <TextBlock FontFamily="Pokemon GB" FontSize="18">
+                <Run>Weight : </Run>
+                <Bold><Run Text="{Binding CurrentPokemon.WeightKg, Mode=OneWay}"></Run></Bold>
+                <Run>kg</Run>
+            </TextBlock>
+            <ListBox Background="Transparent" BorderThickness="0" Height="300" ItemsSource="{Binding CurrentPokemon.Moves}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Border Padding="10" Background="#CCC" CornerRadius="15">
+                            <TextBlock FontSize="12" FontFamily="Pokemon GB" Text="{Binding Move.Name}" />
+                        </Border>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </StackPanel>
+    </Grid>
+</Window>

@@ -59,8 +59,16 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="DAL\PokemonAPIDAL.cs" />
+    <Compile Include="Info.xaml.cs">
+      <DependentUpon>Info.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Models\Pokemon.cs" />
+    <Compile Include="ViewModels\InfoViewModel.cs" />
     <Compile Include="ViewModels\PokedexViewModel.cs" />
+    <Page Include="Info.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
