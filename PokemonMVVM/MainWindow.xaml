@@ -40,9 +40,9 @@
         </ListBox>
         <Grid Grid.Column="3" Grid.Row="4">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="1*"/>
-                <ColumnDefinition Width="2*"/>
-                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="128*"/>
+                <ColumnDefinition Width="255*"/>
+                <ColumnDefinition Width="127.556"/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height="4*"/>
@@ -56,5 +56,5 @@
             <TextBlock Text="{Binding LoadedPokemon.Id}" />
             <Button Command="{Binding MoreInfo}" CommandParameter="{Binding LoadedPokemon}" Grid.Row="3" Grid.Column="1">View More</Button>
         </Grid>
-    </Grid> 
+    </Grid>
 </Window>
